@@ -1,5 +1,7 @@
+// in js html links
+
 let links = document.querySelectorAll(".links")
-let hambMenu = document.querySelector(".hamburger-menu")
+let navMenu = document.querySelector(".hamburger-icon")
 let list = document.querySelector(".list")
 let navActive = document.querySelector(".nav-active")
 
@@ -18,7 +20,7 @@ links.forEach((link) => {
 
 
 
-
+// nav scroll
 
 document.addEventListener("DOMContentLoaded", function () {
     let header = document.querySelector('.header');
@@ -122,4 +124,21 @@ coursesObj.forEach((inf, index) => {
 
 })
 
-// carousel 
+// navbar
+
+const mobileNavList = document.querySelector(".nav-mobile")
+
+
+navMenu.addEventListener("click", () => {
+    console.log("Clicked!");
+    // list.classList.add("hamburger-active")
+    if(mobileNavList.classList.contains("nav-mobile-active")){
+        mobileNavList.classList.remove("nav-mobile-active")
+        document.body.style.overflow = "auto"
+    }else{
+        mobileNavList.classList.add("nav-mobile-active")
+        document.body.style.overflow = "hidden"
+
+    }
+
+});

@@ -1,8 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
-
-
-
 :root {
     --main-texts-color: rgb(244, 244, 244);
     --active-color: #00a3e0;
@@ -32,6 +29,8 @@ body {
     position: fixed;
 }
 
+/* navbar active */
+
 .active {
     color: var(--active-color) !important;
 }
@@ -47,6 +46,9 @@ body {
     position: absolute;
     margin-top: 40%;
 }
+
+
+/* main container */
 
 .container {
     width: 1020px;
@@ -79,7 +81,6 @@ header {
     padding: 20px 0px;
     background-color: #1a1e1f;
     position: sticky;
-    /* box-shadow: 0 0 5px rgba(0,0,0,.5); */
 }
 
 .navbar {
@@ -110,6 +111,22 @@ li a:hover {
     color: var(--active-color);
 }
 
+
+.nav-mobile{
+    display: none;
+    position: fixed;
+    top: 84px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1a1e1f;
+    flex-direction: column;
+    align-items: center;
+    gap: 80px;
+    padding: 50px 10px;
+
+
+}
 
 .hamburger-menu {
     display: none;
@@ -190,9 +207,10 @@ li a:hover {
 
 .technology-education {
     width: 100%;
-    background-image: url(/images/93e8a3_9fa23196ddf6427a9da574e2b31a13d2~mv2.webp);
+    background-image: url(/images/education-img.jpg);
+    background-position: center;
     height: 352px;
-    background-size: 100%;
+    background-size: cover;
     background-repeat: no-repeat;
     display: flex;
     align-items: center;
@@ -213,12 +231,17 @@ li a:hover {
     color: var(--main-texts-color);
     font-size: 28px;
     line-height: 45px;
-
+    cursor: pointer;
 }
 
 .main-technology-link {
     font-size: 20px;
     color: #00aef3;
+    transition: color 0.4s ease 0s;
+}
+
+.main-technology-link:hover {
+    color: #bdbfc1;
 }
 
 .technology-text-container {
@@ -253,6 +276,8 @@ li a:hover {
     margin-bottom: 20px;
 }
 
+/* course */
+
 .courses-container {
     display: flex;
     flex-wrap: wrap;
@@ -267,8 +292,6 @@ li a:hover {
     justify-content: space-between;
     border-radius: 6px;
     border: 1px solid rgba(85, 85, 85, 1);
-    /* font-family: HelveticaNeue, Helvetica Neue, helvetica, Sans-Serif; */
-    ;
 }
 
 .courses-cards img {
@@ -309,6 +332,7 @@ li a:hover {
     gap: 10px;
     padding: 30px;
     color: #00aeef !important;
+    cursor: pointer;
 }
 
 
@@ -316,8 +340,14 @@ li a:hover {
     color: #00AEEF;
     cursor: pointer;
     font-size: 16px;
+    transition: color 0.4s ease 0s;
 }
 
+
+.courser-inf:hover {
+    color: #016a90;
+
+}
 
 /* carousel styles */
 
@@ -383,6 +413,8 @@ li a:hover {
    color: rgb(161, 161, 161);
 }
 
+/* accordion */
+
 .accordion {
     width: 100%;
     max-width: 100%;
@@ -393,13 +425,23 @@ li a:hover {
 }
 
 .accordion-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid rgb(71, 71, 71);
-    padding-bottom: 30px;
+  border-bottom: 1px solid rgb(71, 71, 71);
 }
 
+
+.accordion-heading{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 30px;
+
+}
+.accordion-body{
+  color: #fff;
+  height: 0;
+  overflow: hidden;
+  transition: 0.3s ease;
+}
 
 .accordion-item-h3 {
     font-size: 18px;
@@ -409,9 +451,32 @@ li a:hover {
 
 .arrowDown {
     fill: rgb(244, 244, 244) !important;
+    transform: rotate(0deg);
+    transition: 0.3s ease;
+
 }
 
-/* answers-section style */
+.accordion-heading.close .svg-container {
+  transform: rotate(0deg);
+  transition: 0.3s ease;
+
+
+}
+
+.accordion-heading.open .svg-container {
+  transform: rotateX(180deg);
+
+
+}
+
+.accordion-body-head-text {
+    color: var(--main-texts-color);
+}
+
+.accordion-body-text {
+    padding: 40px 50px;
+    line-height: 25px;
+}
 
 
 /* footer styles */
@@ -490,6 +555,12 @@ footer {
     border-radius: 6px;
     font-size: 16px;
     font-weight: 600;
+    transition: color 0.4s ease 0s;
+}
+
+.footer-contact-btn:hover {
+    background-color: #a8a8a9;
+    color: #2a2a2a;
 }
 
 /* Responsive styles*/
@@ -528,14 +599,33 @@ footer {
 
 
 @media only screen and (max-width: 790px) {
+
+    h1 {
+        font-size: 40px; 
+        margin-bottom: 0px;
+    }
+
+
+    .nav-mobile{
+        display: flex;
+        transform: translate(-120%, 0);
+        transition: transform 0.3s ease-in;
+        
+    }
+
+    .nav-mobile-active{
+        transform: translate(0%, 0);
+
+    }
+    
+    /* card */
+    
     .courses-cards {
         width: 100%;
     }
 
-    .main-technology-text {
-        font-size: 24px;
-    }
-
+   
+    /* answers */
     .answers-section-h2 {
         font-size: 22px;
     }
@@ -547,57 +637,63 @@ footer {
     .accordion-item-h3 {
         font-size: 16px;
     }
+    
+
+    /* technology-ed-res */
 
     .technology-education {
-      align-items: flex-start;
-      text-align: center;
-      border: 5px solid red;
-      height: unset;
-      padding: 20px;
-
-     
-    }
-
-    h1 {
-     font-size: 35px; 
-     margin-bottom: 0px;
+        align-items: center;
+        text-align: left;
+        height: unset;
+        padding: 20px;
+        height: 300px;
+        background-size: cover;
     }
 
     .technology-education-h2 {
-      font-size: 25px;
+      font-size: 30px;
     }
 
     .technology-education .container {
       margin: 0 auto;
     }
 
+    .main-technology-text {
+        font-size: 24px;
+    }
+
 } 
 
 
 @media only screen and (max-width: 600px) {
+    /* technology */
     .main-technology-text {
         line-height: 35px;
         font-size: 22px;
-    }
-
-    .answers-section-text-container {
-        flex-direction: column;
+    }  
+    
+    /*accordion  */
+    .accordion-item {
+        align-items: flex-start;
     }
 
     .accordion-item-h3 {
         font-size: 14px;
     }
-
+    /* answers */
+    
     .answers-section-h2 {
         text-align: center;
         line-height: 30px;
         margin-bottom: 5px;
     }
-
-    .accordion-item {
-        align-items: flex-start;
+    
+    .answers-section-text-container {
+        flex-direction: column;
     }
 
+    /* footer */
+    
     .footer-container {
         flex-direction: column;
         align-items: center;
@@ -608,10 +704,6 @@ footer {
         margin-bottom: 40px;
     }
 
-    .copyright-symbol-text {
-        text-align: center;
-    }
-
     .footer-social-media-link {
         justify-content: center;
     }
@@ -619,24 +711,27 @@ footer {
     .footer-container-right {
         gap: 15px;
     }
+    /*  copyright */
+    .copyright-symbol-text {
+        text-align: center;
+    }
+
 }
 
 
 @media only screen and (max-width: 450px) {
     h1 {
-        font-size: 20px;
+        font-size: 25px;
         margin-bottom: 0px;
         line-height: 33px;
     }
 
+    /* technology */
+
     .technology-education-h2 {
-        font-size: 22px;
+        font-size: 20px;
     }
-
-    /* .main-technology-text-container {
-        padding: 0px 0px 20px;
-    } */
-
+    
     .technology-text-container{
         gap: 20px;
     }
@@ -645,6 +740,8 @@ footer {
         font-size: 17px;
         line-height: 24px;
     }
+
+    /* card */
 
     .card-content-main-text-div {
         margin-bottom: 0px;
@@ -659,21 +756,30 @@ footer {
     .card-content-text {
         font-size: 15px;
     }
+    .card-content-link {
+        padding: 10px 10px;
+    }
+
+    /* course */
 
     .courser-inf {
         font-size: 14px;
     }
 
-    .card-content-link {
-        padding: 10px 10px;
-    }
-
+    /* carousel */
     .partners-carousel-main-text {
         font-size: 18px;
     }
 
+    /* accordion */
+
     .accordion-item-h3 {
         text-align: center;
+    }
+
+    .accordion-heading {
+        flex-direction: column;
+        padding-bottom: 0px;
     }
 
     .accordion-item {
@@ -681,6 +787,13 @@ footer {
         align-items: center;
         padding-bottom: 10px;
     }
+
+    .accordion-body-text {
+        padding: 15px 10px;
+        line-height: 24px;
+    }
+    
+    /* answers */
 
     .answers-section {
         padding: 10px 0px 60px 0px 
